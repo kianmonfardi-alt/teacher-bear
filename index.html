@@ -1,0 +1,2872 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teacher ❤️🐻</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    font-family:Tahoma,Arial,sans-serif;
+    color:#fff;
+    background:
+        radial-gradient(circle at 50% 10%,#633a23,#321a10 48%,#140906);
+}
+
+button,
+textarea{
+    font-family:inherit;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+}
+
+.hidden{
+    display:none!important;
+}
+
+/* ==================================================
+   SPLASH
+================================================== */
+
+#splash{
+    position:fixed;
+    inset:0;
+    z-index:10000;
+    background:#160a06;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.splash-inner{
+    width:min(90%,420px);
+    text-align:center;
+}
+
+.logo-screen{
+    opacity:0;
+    transform:scale(.75);
+    animation:logoIn 1.2s ease forwards;
+}
+
+.logo-screen svg{
+    width:min(55vw,210px);
+    height:auto;
+}
+
+@keyframes logoIn{
+    0%{
+        opacity:0;
+        transform:scale(.75);
+    }
+    50%{
+        opacity:1;
+        transform:scale(1.05);
+    }
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.creator{
+    opacity:0;
+    transform:translateY(15px);
+    transition:.8s ease;
+}
+
+.creator.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.creator-small{
+    color:#caa890;
+    font-size:11px;
+    letter-spacing:4px;
+}
+
+.creator-name{
+    margin-top:8px;
+    font-size:21px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+/* ==================================================
+   LOADER
+================================================== */
+
+#loader{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:#160a06;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.loader-box{
+    width:min(92vw,500px);
+    text-align:center;
+}
+
+.loader-title{
+    font-size:20px;
+    margin-bottom:30px;
+}
+
+.loading-area{
+    position:relative;
+    width:100%;
+    height:60px;
+    display:flex;
+    align-items:center;
+}
+
+.loading-track{
+    width:100%;
+    height:24px;
+    border-radius:30px;
+    background:#28130b;
+    border:1px solid #75472d;
+    box-shadow:inset 0 4px 8px #000;
+    overflow:hidden;
+}
+
+.loading-fill{
+    height:100%;
+    width:0;
+    border-radius:30px;
+    background:linear-gradient(
+        90deg,
+        #603016,
+        #9c5228,
+        #d68b49
+    );
+}
+
+.chocolate{
+    position:absolute;
+    left:0;
+    top:50%;
+    transform:translate(-50%,-50%);
+    font-size:39px;
+    line-height:1;
+    z-index:5;
+    user-select:none;
+    touch-action:none;
+    filter:drop-shadow(0 4px 5px #000);
+}
+
+.loader-hint{
+    margin-top:17px;
+    color:#cdb4a3;
+    font-size:13px;
+}
+
+/* ==================================================
+   APP
+================================================== */
+
+#app{
+    min-height:100vh;
+    position:relative;
+}
+
+.screen{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:25px 15px 100px;
+}
+
+.card{
+    width:min(94%,680px);
+    min-height:500px;
+    position:relative;
+
+    background:rgba(54,27,17,.72);
+    border:1px solid rgba(231,183,140,.20);
+    border-radius:30px;
+
+    padding:28px 20px;
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.45),
+        inset 0 1px rgba(255,255,255,.08);
+
+    text-align:center;
+}
+
+h1{
+    font-size:clamp(22px,6vw,31px);
+    line-height:1.7;
+    margin-bottom:15px;
+}
+
+.question{
+    font-size:clamp(18px,4.8vw,24px);
+    line-height:1.9;
+    margin-bottom:20px;
+}
+
+.description{
+    color:#dfcabc;
+    font-size:14px;
+    line-height:2;
+    margin-bottom:22px;
+}
+
+/* ==================================================
+   BEAR
+================================================== */
+
+.bear-wrap{
+    height:220px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    margin-bottom:8px;
+}
+
+.bear{
+    width:185px;
+    height:185px;
+    position:relative;
+    transform-origin:center bottom;
+    animation:bearFloat 3s ease-in-out infinite;
+}
+
+@keyframes bearFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-7px);
+    }
+}
+
+.ear{
+    position:absolute;
+    top:7px;
+    width:61px;
+    height:61px;
+    border-radius:50%;
+    background:linear-gradient(145deg,#aa6842,#713b27);
+    border:5px solid #4b271a;
+    z-index:1;
+}
+
+.ear::after{
+    content:"";
+    position:absolute;
+    inset:13px;
+    border-radius:50%;
+    background:#c88864;
+}
+
+.ear.left{
+    left:2px;
+}
+
+.ear.right{
+    right:2px;
+}
+
+.head{
+    position:absolute;
+    left:50%;
+    bottom:0;
+    transform:translateX(-50%);
+    width:166px;
+    height:166px;
+    border-radius:48% 48% 45% 45%;
+
+    background:
+        radial-gradient(
+            circle at 38% 25%,
+            #ca885f,
+            #9c593a 48%,
+            #703c28 100%
+        );
+
+    border:5px solid #4a271a;
+
+    box-shadow:
+        inset 0 8px 13px rgba(255,255,255,.13),
+        0 12px 22px rgba(0,0,0,.35);
+
+    z-index:2;
+}
+
+.eye{
+    position:absolute;
+    top:56px;
+    width:31px;
+    height:31px;
+    border-radius:50%;
+    background:#050505;
+    overflow:hidden;
+    transition:
+        transform .28s ease,
+        top .28s ease;
+}
+
+.eye::after{
+    content:"";
+    position:absolute;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#fff;
+    left:6px;
+    top:5px;
+}
+
+.eye.left{
+    left:37px;
+}
+
+.eye.right{
+    right:37px;
+}
+
+.muzzle{
+    position:absolute;
+    left:50%;
+    top:92px;
+    transform:translateX(-50%);
+    width:83px;
+    height:58px;
+    border-radius:50%;
+    background:#d69670;
+}
+
+.nose{
+    position:absolute;
+    left:50%;
+    top:103px;
+    transform:translateX(-50%);
+    width:27px;
+    height:20px;
+    border-radius:50%;
+    background:#101010;
+    z-index:5;
+}
+
+.mouth{
+    position:absolute;
+    left:50%;
+    top:126px;
+    transform:translateX(-50%);
+    width:44px;
+    height:23px;
+    border-bottom:5px solid #24100b;
+    border-radius:0 0 50% 50%;
+    z-index:5;
+    transition:.25s ease;
+}
+
+.bear.happy .eye{
+    transform:scaleY(.78);
+}
+
+.bear.happy .mouth{
+    width:48px;
+    height:25px;
+}
+
+.bear.sad .eye{
+    transform:scaleY(.65);
+}
+
+.bear.sad .mouth{
+    top:134px;
+    width:42px;
+    height:16px;
+    border-bottom:0;
+    border-top:5px solid #24100b;
+    border-radius:50% 50% 0 0;
+}
+
+.bear.cry .eye{
+    transform:scaleY(.82);
+}
+
+.bear.cry .eye::before{
+    content:"";
+    position:absolute;
+    width:6px;
+    height:15px;
+    border-radius:50%;
+    background:#78cfff;
+    left:3px;
+    top:25px;
+    animation:tear .7s ease-in-out infinite;
+}
+
+.bear.cry .eye.right::before{
+    left:auto;
+    right:3px;
+}
+
+.bear.cry .mouth{
+    top:134px;
+    width:43px;
+    height:16px;
+    border-bottom:0;
+    border-top:5px solid #24100b;
+    border-radius:50% 50% 0 0;
+}
+
+@keyframes tear{
+    0%,100%{
+        transform:translateY(0);
+        opacity:.7;
+    }
+    50%{
+        transform:translateY(7px);
+        opacity:1;
+    }
+}
+
+.bear.surprised .eye{
+    transform:scale(1.18);
+}
+
+.bear.surprised .mouth{
+    top:119px;
+    width:27px;
+    height:31px;
+    border:0;
+    border-radius:50%;
+    background:#21100c;
+}
+
+.bear.angry .eye.left{
+    transform:rotate(-12deg);
+}
+
+.bear.angry .eye.right{
+    transform:rotate(12deg);
+}
+
+.bear.angry .mouth{
+    top:133px;
+    width:43px;
+    height:15px;
+    border-bottom:0;
+    border-top:5px solid #24100b;
+    border-radius:50% 50% 0 0;
+}
+
+.bear.thinking .eye.left{
+    top:52px;
+    transform:translate(-4px,-2px);
+}
+
+.bear.thinking .eye.right{
+    top:52px;
+    transform:translate(-5px,-2px);
+}
+
+.bear.thinking .mouth{
+    width:31px;
+    height:5px;
+    border-bottom:5px solid #24100b;
+    border-radius:50%;
+}
+
+.bear.shy .eye{
+    transform:scaleY(.42);
+}
+
+.bear.shy .mouth{
+    width:38px;
+    height:23px;
+}
+
+.bear.laugh .eye{
+    transform:scaleY(.18);
+}
+
+.bear.laugh .mouth{
+    width:51px;
+    height:28px;
+}
+
+.bear.wink .eye.left{
+    transform:scaleY(.13);
+}
+
+.bear.wink .eye.right{
+    transform:scale(1.05);
+}
+
+.bear.wink .mouth{
+    width:48px;
+}
+
+.bear.dance{
+    animation:dance .38s ease-in-out infinite alternate;
+}
+
+@keyframes dance{
+    from{
+        transform:rotate(-8deg) translateY(0);
+    }
+    to{
+        transform:rotate(8deg) translateY(-9px);
+    }
+}
+
+/* ==================================================
+   SLEEP
+================================================== */
+
+/*
+   خرس در صفحه خواب:
+   دقیقاً وسط کارت قرار می‌گیرد.
+*/
+
+.sleep-card{
+    position:relative;
+    min-height:560px;
+}
+
+.sleep-card #content{
+    position:relative;
+    z-index:4;
+    padding-top:12px;
+}
+
+.sleep-card .bear-wrap{
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:210px;
+    height:210px;
+    margin:0;
+    transform:translate(-50%,-50%);
+    z-index:3;
+    pointer-events:none;
+}
+
+.sleep-card .bear{
+    animation:none;
+}
+
+.bear.sleeping{
+    animation:sleepLay 1.15s cubic-bezier(.16,1,.3,1) forwards;
+}
+
+@keyframes sleepLay{
+
+    0%{
+        transform:rotate(0deg) translateY(0);
+    }
+
+    65%{
+        transform:rotate(82deg) translateY(8px);
+    }
+
+    100%{
+        transform:rotate(90deg) translateY(24px);
+    }
+}
+
+.bear.sleeping .eye{
+    top:68px;
+    height:7px;
+    transform:none!important;
+}
+
+.bear.sleeping .eye::after{
+    display:none;
+}
+
+.bear.sleeping .mouth{
+    top:132px;
+    width:38px;
+    height:12px;
+}
+
+.bear.sleeping::before{
+    content:"💨";
+    position:absolute;
+    right:-30px;
+    top:45px;
+    font-size:24px;
+    opacity:0;
+    animation:sleepPuff 2.2s ease-in-out infinite;
+    z-index:10;
+}
+
+@keyframes sleepPuff{
+    0%{
+        opacity:0;
+        transform:translate(0,8px) scale(.7);
+    }
+
+    25%{
+        opacity:.9;
+    }
+
+    100%{
+        opacity:0;
+        transform:translate(24px,-20px) scale(1.15);
+    }
+}
+
+.bear.sleeping::after{
+    content:"Zzz";
+    position:absolute;
+    right:-8px;
+    top:8px;
+    color:#f1d7c4;
+    font-size:22px;
+    font-weight:bold;
+    opacity:0;
+    animation:snore 1.8s ease-in-out infinite;
+}
+
+@keyframes snore{
+    0%{
+        opacity:0;
+        transform:translate(0,12px) scale(.75);
+    }
+
+    25%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+        transform:translate(22px,-28px) scale(1.2);
+    }
+}
+
+/* ==================================================
+   INPUT
+================================================== */
+
+textarea{
+    width:100%;
+    min-height:130px;
+    resize:none;
+    padding:15px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,.13);
+    background:rgba(20,9,5,.55);
+    color:#fff;
+    outline:none;
+    font-size:16px;
+    line-height:1.8;
+}
+
+textarea:focus{
+    border-color:#c77c4b;
+}
+
+/* ==================================================
+   BUTTONS
+================================================== */
+
+.buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    justify-content:center;
+    margin-top:18px;
+}
+
+.btn{
+    min-height:48px;
+    padding:12px 22px;
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #c47746,
+            #88482d
+        );
+
+    color:#fff;
+    font-size:15px;
+
+    box-shadow:0 7px 18px rgba(0,0,0,.28);
+
+    transition:
+        transform .2s cubic-bezier(.16,1,.3,1),
+        opacity .2s ease;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.btn.secondary{
+    background:#3b2117;
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.btn.danger{
+    background:#55261d;
+}
+
+.back{
+    margin-top:18px;
+    background:transparent;
+    color:#d3ad95;
+    font-size:14px;
+    text-decoration:underline;
+}
+
+/* ==================================================
+   ESCAPE
+================================================== */
+
+.escape-layer{
+    position:absolute;
+    inset:0;
+    z-index:500;
+    pointer-events:none;
+}
+
+.escape-message{
+    position:absolute;
+    top:22px;
+    left:50%;
+    transform:translateX(-50%);
+    width:90%;
+    font-size:19px;
+    line-height:1.8;
+}
+
+.escape-button{
+    position:absolute!important;
+    pointer-events:auto;
+    z-index:600;
+    white-space:nowrap;
+
+    transition:
+        left .20s cubic-bezier(.16,1,.3,1),
+        top .20s cubic-bezier(.16,1,.3,1),
+        transform .20s cubic-bezier(.16,1,.3,1);
+}
+
+.escape-back{
+    pointer-events:auto;
+}
+
+/* ==================================================
+   FOOD RAIN
+================================================== */
+
+.food{
+    position:fixed;
+    top:-70px;
+    z-index:8000;
+    pointer-events:none;
+    font-size:34px;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-80px) rotate(0);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(110vh) rotate(540deg);
+        opacity:1;
+    }
+}
+
+/* ==================================================
+   BOTTOM LOOP
+================================================== */
+
+.food-strip{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    height:70px;
+    z-index:7000;
+    overflow:hidden;
+    background:rgba(27,12,7,.97);
+    border-top:1px solid rgba(218,166,120,.18);
+    box-shadow:
+        0 -10px 30px rgba(0,0,0,.35);
+}
+
+.food-loop{
+    height:100%;
+    display:flex;
+    width:max-content;
+    align-items:center;
+    animation:
+        continuousLoop 4.8s linear infinite;
+}
+
+.food-group{
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    width:420px;
+    flex-shrink:0;
+    padding:0 28px;
+}
+
+.food-item{
+    display:block;
+    font-size:34px;
+    animation:
+        foodBounce .7s ease-in-out infinite alternate;
+}
+
+.food-item:nth-child(2){
+    animation-delay:.15s;
+}
+
+.food-item:nth-child(3){
+    animation-delay:.30s;
+}
+
+@keyframes foodBounce{
+    from{
+        transform:translateY(5px);
+    }
+
+    to{
+        transform:translateY(-8px);
+    }
+}
+
+@keyframes continuousLoop{
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-420px);
+    }
+}
+
+/* ==================================================
+   TRANSITIONS
+================================================== */
+
+#app.app-enter{
+    animation:appEnter .62s cubic-bezier(.16,1,.3,1) both;
+}
+
+@keyframes appEnter{
+    0%{
+        opacity:0;
+        transform:translateY(14px) scale(.985);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.content-transition{
+    animation:
+        contentEnter .38s cubic-bezier(.16,1,.3,1)
+        both;
+
+    will-change:
+        opacity,
+        transform,
+        filter;
+}
+
+@keyframes contentEnter{
+
+    0%{
+        opacity:0;
+        transform:
+            translateY(10px)
+            scale(.995);
+
+        filter:blur(1px);
+    }
+
+    60%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:blur(0);
+    }
+}
+
+.content-exit{
+    animation:
+        contentExit .16s cubic-bezier(.4,0,1,1)
+        both;
+
+    pointer-events:none;
+}
+
+@keyframes contentExit{
+
+    from{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:blur(0);
+    }
+
+    to{
+        opacity:0;
+        transform:
+            translateY(-5px)
+            scale(.997);
+
+        filter:blur(1px);
+    }
+}
+
+@media (prefers-reduced-motion:reduce){
+
+    #app.app-enter,
+    .content-transition,
+    .content-exit{
+        animation:none!important;
+    }
+}
+
+/* ==================================================
+   FINAL
+================================================== */
+
+.final-title{
+    font-size:25px;
+    line-height:1.8;
+    margin-bottom:14px;
+}
+
+.final-text{
+    color:#ead9ce;
+    font-size:15px;
+    line-height:2.1;
+}
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media(max-width:500px){
+
+    .screen{
+        padding:15px 10px 95px;
+    }
+
+    .card{
+        width:96%;
+        padding:22px 14px;
+        border-radius:25px;
+    }
+
+    .bear-wrap{
+        height:205px;
+    }
+
+    .bear{
+        transform:scale(.92);
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .food-strip{
+        height:64px;
+    }
+
+    .food-group{
+        width:320px;
+        padding:0 20px;
+    }
+
+    .food-item{
+        font-size:29px;
+    }
+
+    .sleep-card{
+        min-height:560px;
+    }
+
+    .sleep-card .bear-wrap{
+        width:200px;
+        height:200px;
+    }
+
+    @keyframes continuousLoop{
+
+        from{
+            transform:translateX(0);
+        }
+
+        to{
+            transform:translateX(-320px);
+        }
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="splash">
+
+    <div class="splash-inner">
+
+        <div class="logo-screen" id="logoScreen">
+
+            <svg viewBox="0 0 300 240"
+                 xmlns="http://www.w3.org/2000/svg">
+
+                <path
+                    d="M150 35
+                    C125 10 85 25 87 58
+                    C55 48 38 78 54 102
+                    C30 120 48 157 78 157
+                    C76 188 110 202 133 181
+                    C143 200 157 200 167 181
+                    C190 202 224 188 222 157
+                    C252 157 270 120 246 102
+                    C262 78 245 48 213 58
+                    C215 25 175 10 150 35Z"
+                    fill="#70452f"
+                    stroke="#d89a68"
+                    stroke-width="7"/>
+
+                <path
+                    d="M145 48
+                    C120 27 94 39 96 67
+                    C70 59 54 82 67 103
+                    C48 121 62 145 88 144
+                    C86 170 111 181 132 165
+                    L150 150
+                    L150 45Z"
+                    fill="#25130c"/>
+
+                <path
+                    d="M108 92 L89 110 L108 128"
+                    fill="none"
+                    stroke="#e3a36e"
+                    stroke-width="7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+
+                <path
+                    d="M119 127 L137 90"
+                    stroke="#e3a36e"
+                    stroke-width="7"
+                    stroke-linecap="round"/>
+
+                <path
+                    d="M130 92 L147 110 L130 128"
+                    fill="none"
+                    stroke="#e3a36e"
+                    stroke-width="7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+
+                <path
+                    d="M153 50
+                    C178 28 205 40 203 68
+                    C229 59 245 82 232 103
+                    C251 121 237 145 211 144
+                    C213 170 188 181 167 165
+                    L150 150
+                    L150 45Z"
+                    fill="#b97550"/>
+
+                <path
+                    d="M174 67
+                    C159 77 179 87 163 98
+                    C183 106 162 118 180 128
+                    C169 139 186 146 177 158"
+                    fill="none"
+                    stroke="#5a3020"
+                    stroke-width="6"
+                    stroke-linecap="round"/>
+
+                <text
+                    x="150"
+                    y="220"
+                    text-anchor="middle"
+                    fill="#fff"
+                    font-size="25"
+                    font-weight="bold"
+                    letter-spacing="5">
+                    KM CODE
+                </text>
+
+            </svg>
+
+        </div>
+
+        <div class="creator" id="creator">
+
+            <div class="creator-small">
+                CREATED BY
+            </div>
+
+            <div class="creator-name">
+                KIAN &amp; MOHAMMAD
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="loader" class="hidden">
+
+    <div class="loader-box">
+
+        <div class="loader-title">
+            آماده‌سازی برای تیچر... 🍫🐻
+        </div>
+
+        <div class="loading-area" id="loadingArea">
+
+            <div class="loading-track">
+
+                <div
+                    class="loading-fill"
+                    id="loadingFill">
+                </div>
+
+            </div>
+
+            <div
+                class="chocolate"
+                id="chocolate">
+
+                🍫
+
+            </div>
+
+        </div>
+
+        <div class="loader-hint">
+            شکلات رو بگیر و تا انتهای نوار بکش 🍫
+        </div>
+
+    </div>
+
+</div>
+
+<div id="app" class="hidden">
+
+    <main class="screen">
+
+        <section class="card" id="card">
+
+            <div class="bear-wrap">
+
+                <div class="bear happy" id="bear">
+
+                    <div class="ear left"></div>
+                    <div class="ear right"></div>
+
+                    <div class="head">
+
+                        <div class="eye left"></div>
+                        <div class="eye right"></div>
+
+                        <div class="muzzle"></div>
+
+                        <div class="nose"></div>
+
+                        <div class="mouth"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="content"></div>
+
+        </section>
+
+    </main>
+
+    <div class="food-strip">
+
+        <div class="food-loop">
+
+            <div class="food-group">
+                <span class="food-item">🥛</span>
+                <span class="food-item">🍫</span>
+                <span class="food-item">🍪</span>
+            </div>
+
+            <div class="food-group">
+                <span class="food-item">🥛</span>
+                <span class="food-item">🍫</span>
+                <span class="food-item">🍪</span>
+            </div>
+
+            <div class="food-group">
+                <span class="food-item">🥛</span>
+                <span class="food-item">🍫</span>
+                <span class="food-item">🍪</span>
+            </div>
+
+            <div class="food-group">
+                <span class="food-item">🥛</span>
+                <span class="food-item">🍫</span>
+                <span class="food-item">🍪</span>
+            </div>
+
+            <div class="food-group">
+                <span class="food-item">🥛</span>
+                <span class="food-item">🍫</span>
+                <span class="food-item">🍪</span>
+            </div>
+
+            <div class="food-group">
+                <span class="food-item">🥛</span>
+                <span class="food-item">🍫</span>
+                <span class="food-item">🍪</span>
+            </div>
+
+            <div class="food-group">
+                <span class="food-item">🥛</span>
+                <span class="food-item">🍫</span>
+                <span class="food-item">🍪</span>
+            </div>
+
+            <div class="food-group">
+                <span class="food-item">🥛</span>
+                <span class="food-item">🍫</span>
+                <span class="food-item">🍪</span>
+            </div>
+
+            <div class="food-group">
+                <span class="food-item">🥛</span>
+                <span class="food-item">🍫</span>
+                <span class="food-item">🍪</span>
+            </div>
+
+            <div class="food-group">
+                <span class="food-item">🥛</span>
+                <span class="food-item">🍫</span>
+                <span class="food-item">🍪</span>
+            </div>
+
+            <div class="food-group">
+                <span class="food-item">🥛</span>
+                <span class="food-item">🍫</span>
+                <span class="food-item">🍪</span>
+            </div>
+
+            <div class="food-group">
+                <span class="food-item">🥛</span>
+                <span class="food-item">🍫</span>
+                <span class="food-item">🍪</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* ==================================================
+   ELEMENTS
+================================================== */
+
+const splash=document.getElementById("splash");
+const logoScreen=document.getElementById("logoScreen");
+const creator=document.getElementById("creator");
+const loader=document.getElementById("loader");
+const app=document.getElementById("app");
+const card=document.getElementById("card");
+const content=document.getElementById("content");
+const bear=document.getElementById("bear");
+const loadingArea=document.getElementById("loadingArea");
+const loadingFill=document.getElementById("loadingFill");
+const chocolate=document.getElementById("chocolate");
+
+/* ==================================================
+   STATE
+================================================== */
+
+const state={
+
+    current:"welcome",
+
+    answers:{
+        q1:"",
+        q2:"",
+        q2Explain:"",
+        q3:"",
+        q4:""
+    },
+
+    escapeCount:0,
+
+    escapeActive:false,
+
+    /*
+       مهم:
+       تا وقتی کاربر برای اولین بار
+       روی دکمه فراری کلیک نکرده،
+       موس باعث فرار نمی‌شود.
+    */
+    escapeProximityEnabled:false,
+
+    escapeMoveHandler:null,
+    escapeLayer:null,
+    escapeButton:null,
+    navigationTimer:null,
+    transitionTimer:null,
+    blinkTimer:null
+};
+
+/* ==================================================
+   SPLASH
+================================================== */
+
+setTimeout(()=>{
+
+    logoScreen.style.transition="opacity .8s ease";
+    logoScreen.style.opacity="0";
+
+    setTimeout(()=>{
+
+        logoScreen.classList.add("hidden");
+        creator.classList.add("show");
+
+    },850);
+
+},2300);
+
+setTimeout(()=>{
+
+    creator.style.opacity="0";
+
+    setTimeout(()=>{
+
+        splash.remove();
+        loader.classList.remove("hidden");
+
+    },750);
+
+},4300);
+
+/* ==================================================
+   LOADER
+================================================== */
+
+let dragging=false;
+let loaded=false;
+
+function moveChocolate(clientX){
+
+    const rect=
+        loadingArea.getBoundingClientRect();
+
+    let x=clientX-rect.left;
+
+    x=Math.max(
+        0,
+        Math.min(rect.width,x)
+    );
+
+    const percent=
+        (x/rect.width)*100;
+
+    loadingFill.style.width=
+        percent+"%";
+
+    chocolate.style.left=
+        x+"px";
+
+    if(percent>=98)
+        finishLoading();
+}
+
+chocolate.addEventListener(
+    "pointerdown",
+    e=>{
+
+        dragging=true;
+
+        chocolate.setPointerCapture(
+            e.pointerId
+        );
+
+    }
+);
+
+chocolate.addEventListener(
+    "pointermove",
+    e=>{
+
+        if(dragging)
+            moveChocolate(e.clientX);
+
+    }
+);
+
+chocolate.addEventListener(
+    "pointerup",
+    ()=>{
+        dragging=false;
+    }
+);
+
+chocolate.addEventListener(
+    "pointercancel",
+    ()=>{
+        dragging=false;
+    }
+);
+
+function finishLoading(){
+
+    if(loaded)
+        return;
+
+    loaded=true;
+
+    loadingFill.style.width="100%";
+    chocolate.style.left="100%";
+
+    setTimeout(()=>{
+
+        foodRain();
+
+        loader.style.transition=
+            "opacity .7s ease";
+
+        loader.style.opacity="0";
+
+        setTimeout(()=>{
+
+            loader.remove();
+
+            app.classList.remove("hidden");
+            app.classList.add("app-enter");
+
+            showWelcome();
+
+            setTimeout(()=>{
+                app.classList.remove(
+                    "app-enter"
+                );
+            },700);
+
+        },700);
+
+    },500);
+}
+
+/* ==================================================
+   EXPRESSION
+================================================== */
+
+function expression(type){
+
+    bear.className=
+        "bear "+type;
+}
+
+/* ==================================================
+   CLEAN
+================================================== */
+
+function clearQuestion(){
+
+    if(state.navigationTimer){
+
+        clearTimeout(
+            state.navigationTimer
+        );
+
+        state.navigationTimer=null;
+    }
+
+    if(state.transitionTimer){
+
+        clearTimeout(
+            state.transitionTimer
+        );
+
+        state.transitionTimer=null;
+    }
+
+    content.classList.remove(
+        "content-exit",
+        "content-transition"
+    );
+
+    if(state.blinkTimer){
+
+        clearTimeout(
+            state.blinkTimer
+        );
+
+        state.blinkTimer=null;
+    }
+
+    removeEscape();
+
+    content.innerHTML="";
+
+    state.escapeButton=null;
+    state.escapeActive=false;
+    state.escapeCount=0;
+    state.escapeProximityEnabled=false;
+}
+
+/* ==================================================
+   NAVIGATION
+================================================== */
+
+function animateContent(){
+
+    content.classList.remove(
+        "content-transition"
+    );
+
+    void content.offsetWidth;
+
+    content.classList.add(
+        "content-transition"
+    );
+
+    clearTimeout(
+        state.transitionTimer
+    );
+
+    state.transitionTimer=
+        setTimeout(()=>{
+
+            content.classList.remove(
+                "content-transition"
+            );
+
+            state.transitionTimer=null;
+
+        },420);
+}
+
+function smoothContentExit(){
+
+    content.classList.remove(
+        "content-transition"
+    );
+
+    content.classList.add(
+        "content-exit"
+    );
+
+    void content.offsetWidth;
+}
+
+function smoothNavigate(fn){
+
+    if(state.navigationTimer)
+        clearTimeout(
+            state.navigationTimer
+        );
+
+    smoothContentExit();
+
+    state.navigationTimer=
+        setTimeout(()=>{
+
+            state.navigationTimer=null;
+
+            content.classList.remove(
+                "content-exit"
+            );
+
+            fn();
+
+        },160);
+}
+
+/* ==================================================
+   VALIDATION
+================================================== */
+
+function validAnswer(text){
+
+    text=text
+        .replace(/[ي]/g,"ی")
+        .replace(/[ك]/g,"ک")
+        .replace(/\s+/g," ")
+        .trim();
+
+    const words=text
+        .split(" ")
+        .filter(Boolean);
+
+    if(words.length<2)
+        return false;
+
+    const letters=
+        (text.match(/[A-Za-zآ-ی]/g)||[])
+        .length;
+
+    if(letters<2)
+        return false;
+
+    if(/(.)\1{4,}/u.test(text))
+        return false;
+
+    const bad=[
+        "asdf",
+        "qwer",
+        "zxcv",
+        "hjkl",
+        "poiuy",
+        "lkjh",
+        "test",
+        "abc abc",
+        "hello hello"
+    ];
+
+    const lower=text.toLowerCase();
+
+    if(
+        bad.some(
+            x=>lower.includes(x)
+        )
+    )
+        return false;
+
+    if(/^123/.test(text))
+        return false;
+
+    const unique=new Set(
+        words.map(
+            x=>x.toLowerCase()
+        )
+    );
+
+    if(
+        words.length>=2 &&
+        unique.size===1
+    )
+        return false;
+
+    return true;
+}
+
+/* ==================================================
+   POSITIVE
+================================================== */
+
+function positive(){
+
+    expression("happy");
+    foodRain();
+}
+
+/* ==================================================
+   SAVE
+================================================== */
+
+function saveAnswer(key,value){
+
+    state.answers[key]=
+        value.trim();
+}
+
+/* ==================================================
+   WELCOME
+================================================== */
+
+function showWelcome(){
+
+    clearQuestion();
+
+    state.current="welcome";
+
+    card.classList.remove(
+        "sleep-card"
+    );
+
+    bear.classList.remove(
+        "sleeping"
+    );
+
+    expression("happy");
+
+    content.innerHTML=`
+
+        <h1>
+            خوش اومدین تیچر! ❤️🐻
+        </h1>
+
+        <p class="description">
+
+            یه گفت‌وگوی کوچولو فقط برای شما آماده کردیم. 🍫🥛
+
+            <br>
+
+            چند تا سؤال کوتاه داریم و امیدواریم جواب دادن
+            بهشون براتون خاطره خوبی بسازه. ❤️
+
+            <br>
+
+            آماده‌اید؟
+
+        </p>
+
+        <div class="buttons">
+
+            <button
+                class="btn"
+                id="startBtn">
+
+                شروع کنیم ❤️
+
+            </button>
+
+        </div>
+    `;
+
+    animateContent();
+
+    document
+        .getElementById("startBtn")
+        .onclick=showQ1;
+}
+
+/* ==================================================
+   Q1
+================================================== */
+
+function showQ1(){
+
+    clearQuestion();
+
+    state.current="q1";
+
+    card.classList.remove(
+        "sleep-card"
+    );
+
+    bear.classList.remove(
+        "sleeping"
+    );
+
+    expression("thinking");
+
+    content.innerHTML=`
+
+        <div class="question">
+            تیچر، چی شد که تصمیم گرفتید کلاس ما رو ترک کنید؟
+        </div>
+
+        <textarea
+            id="answer"
+            placeholder="جوابتون رو اینجا بنویسید...">
+        </textarea>
+
+        <div class="buttons">
+
+            <button
+                class="btn"
+                id="submit">
+
+                ثبت جواب ❤️
+
+            </button>
+
+            <button
+                class="btn secondary"
+                id="negative">
+
+                نمی‌خوام جواب بدم
+
+            </button>
+
+        </div>
+    `;
+
+    animateContent();
+
+    const answer=
+        document.getElementById(
+            "answer"
+        );
+
+    document
+        .getElementById("submit")
+        .onclick=()=>{
+
+            if(!validAnswer(answer.value)){
+
+                expression("surprised");
+
+                answer.animate(
+                    [
+                        {transform:"translateX(-6px)"},
+                        {transform:"translateX(6px)"},
+                        {transform:"translateX(-4px)"},
+                        {transform:"translateX(4px)"},
+                        {transform:"translateX(0)"}
+                    ],
+                    350
+                );
+
+                return;
+            }
+
+            saveAnswer(
+                "q1",
+                answer.value
+            );
+
+            expression("shy");
+            positive();
+
+            smoothNavigate(showQ2);
+        };
+
+    document
+        .getElementById("negative")
+        .onclick=()=>{
+
+            state.escapeCount++;
+
+            const negative=
+                document.getElementById(
+                    "negative"
+                );
+
+            if(state.escapeCount===1){
+
+                expression("surprised");
+
+                negative.textContent=
+                    "اِ... مطمئنید؟ 👀🐻";
+
+            }
+
+            else if(
+                state.escapeCount===2
+            ){
+
+                expression("cry");
+
+                negative.textContent=
+                    "فقط یه جواب کوچولو... 🍫🥺";
+
+            }
+
+            else{
+
+                activateEscape(
+                    "نه نه... هنوز باید یه جواب کوچولو بدید! 🐻🍫",
+                    "نه نه! هنوز جواب نمی‌دم 😭",
+                    showQ1
+                );
+            }
+        };
+}
+
+/* ==================================================
+   Q2
+================================================== */
+
+function showQ2(){
+
+    clearQuestion();
+
+    state.current="q2";
+
+    card.classList.remove(
+        "sleep-card"
+    );
+
+    bear.classList.remove(
+        "sleeping"
+    );
+
+    expression("happy");
+
+    content.innerHTML=`
+
+        <div class="question">
+
+            تیچر، فکر می‌کنید ممکنه ترم بعد دوباره با ما کلاس بذارید؟ 🐻🍫
+
+        </div>
+
+        <div class="buttons">
+
+            <button
+                class="btn"
+                id="yes">
+
+                بله ❤️
+
+            </button>
+
+            <button
+                class="btn danger"
+                id="no">
+
+                نه
+
+            </button>
+
+            <button
+                class="btn secondary"
+                id="explain">
+
+                می‌خوام توضیح بدم ✍️
+
+            </button>
+
+        </div>
+    `;
+
+    animateContent();
+
+    let noCount=0;
+
+    document
+        .getElementById("yes")
+        .onclick=()=>{
+
+            saveAnswer(
+                "q2",
+                "بله ❤️"
+            );
+
+            positive();
+
+            smoothNavigate(showQ3);
+        };
+
+    document
+        .getElementById("no")
+        .onclick=()=>{
+
+            noCount++;
+
+            const no=
+                document.getElementById("no");
+
+            if(noCount===1){
+
+                expression("surprised");
+
+                no.textContent=
+                    "مطمئنید؟ 👀";
+
+            }
+
+            else if(noCount===2){
+
+                expression("cry");
+
+                no.textContent=
+                    "واقعاً مطمئنید؟ 🥺🐻";
+
+            }
+
+            else{
+
+                saveAnswer(
+                    "q2",
+                    "نه"
+                );
+
+                activateEscape(
+                    "نه نه... هنوز جواب قطعی نمی‌دیم! 🐻🍫",
+                    "نه نه! هنوز جواب نمی‌دم 😭",
+                    showQ2
+                );
+            }
+        };
+
+    document
+        .getElementById("explain")
+        .onclick=showQ2Explain;
+}
+
+/* ==================================================
+   Q2 EXPLAIN
+================================================== */
+
+function showQ2Explain(){
+
+    clearQuestion();
+
+    state.current="q2Explain";
+
+    card.classList.remove(
+        "sleep-card"
+    );
+
+    bear.classList.remove(
+        "sleeping"
+    );
+
+    expression("thinking");
+
+    content.innerHTML=`
+
+        <div class="question">
+            توضیحتون رو برای ما بنویسید ✍️🐻
+        </div>
+
+        <textarea
+            id="answer"
+            placeholder="اینجا توضیحتون رو بنویسید...">
+        </textarea>
+
+        <div class="buttons">
+
+            <button
+                class="btn"
+                id="saveExplain">
+
+                ثبت توضیح ❤️
+
+            </button>
+
+        </div>
+
+        <button
+            class="back"
+            id="back">
+
+            ← برگشت
+
+        </button>
+    `;
+
+    animateContent();
+
+    document
+        .getElementById("saveExplain")
+        .onclick=()=>{
+
+            const answer=
+                document.getElementById(
+                    "answer"
+                );
+
+            if(!validAnswer(answer.value)){
+
+                expression("surprised");
+
+                return;
+            }
+
+            saveAnswer(
+                "q2",
+                "می‌خوام توضیح بدم"
+            );
+
+            saveAnswer(
+                "q2Explain",
+                answer.value
+            );
+
+            positive();
+
+            smoothNavigate(showQ3);
+        };
+
+    document
+        .getElementById("back")
+        .onclick=showQ2;
+}
+
+/* ==================================================
+   Q3
+================================================== */
+
+function showQ3(){
+
+    clearQuestion();
+
+    state.current="q3";
+
+    card.classList.remove(
+        "sleep-card"
+    );
+
+    bear.classList.remove(
+        "sleeping"
+    );
+
+    expression("happy");
+
+    content.innerHTML=`
+
+        <div class="question">
+
+            پس مطمئن شدیم که ترم بعد با ما هستین! ❤️
+
+        </div>
+
+        <p class="description">
+
+            امیدوارم ترم بعد هم کلاس خوبی با هم داشته باشیم.
+
+        </p>
+
+        <div class="buttons">
+
+            <button
+                class="btn"
+                id="sure">
+
+                مطمئنم ❤️
+
+            </button>
+
+            <button
+                class="btn danger"
+                id="unsure">
+
+                نه، مطمئن نیستم
+
+            </button>
+
+        </div>
+    `;
+
+    animateContent();
+
+    let count=0;
+
+    document
+        .getElementById("sure")
+        .onclick=()=>{
+
+            saveAnswer(
+                "q3",
+                "مطمئنم ❤️"
+            );
+
+            positive();
+
+            smoothNavigate(showQ4);
+        };
+
+    document
+        .getElementById("unsure")
+        .onclick=()=>{
+
+            count++;
+
+            const btn=
+                document.getElementById(
+                    "unsure"
+                );
+
+            if(count===1){
+
+                expression("surprised");
+
+                btn.textContent=
+                    "اِ... چرا مطمئن نیستید؟ 👀";
+
+            }
+
+            else if(count===2){
+
+                expression("sad");
+
+                btn.textContent=
+                    "هنوز یه کم شک دارید؟ 🥺🐻";
+
+            }
+
+            else{
+
+                saveAnswer(
+                    "q3",
+                    "نه، مطمئن نیستم"
+                );
+
+                activateEscape(
+                    "هنوز مطمئن نشدیم؟ 🐻🍫",
+                    "نه نه! هنوز مطمئن نیستم 😭",
+                    showQ3
+                );
+            }
+        };
+}
+
+/* ==================================================
+   Q4
+================================================== */
+
+function showQ4(){
+
+    clearQuestion();
+
+    state.current="q4";
+
+    card.classList.remove(
+        "sleep-card"
+    );
+
+    bear.classList.remove(
+        "sleeping"
+    );
+
+    expression("thinking");
+
+    content.innerHTML=`
+
+        <div class="question">
+
+            حالا که ترم بعد با ما کلاس دارید،
+            چه پیشنهاداتی برای بهتر شدن کلاس دارید؟
+
+        </div>
+
+        <textarea
+            id="answer"
+            placeholder="پیشنهادتون رو اینجا بنویسید...">
+        </textarea>
+
+        <div class="buttons">
+
+            <button
+                class="btn"
+                id="submit">
+
+                ثبت پیشنهاد ❤️
+
+            </button>
+
+            <button
+                class="btn secondary"
+                id="negative">
+
+                پیشنهاد نمی‌دم
+
+            </button>
+
+        </div>
+    `;
+
+    animateContent();
+
+    const answer=
+        document.getElementById(
+            "answer"
+        );
+
+    document
+        .getElementById("submit")
+        .onclick=()=>{
+
+            if(!validAnswer(answer.value)){
+
+                expression("surprised");
+
+                return;
+            }
+
+            saveAnswer(
+                "q4",
+                answer.value
+            );
+
+            positive();
+
+            smoothNavigate(showFinal);
+        };
+
+    let count=0;
+
+    document
+        .getElementById("negative")
+        .onclick=()=>{
+
+            count++;
+
+            const negative=
+                document.getElementById(
+                    "negative"
+                );
+
+            if(count===1){
+
+                expression("surprised");
+
+                negative.textContent=
+                    "شاید یه پیشنهاد کوچولو داشته باشید؟ 👀🐻";
+
+            }
+
+            else if(count===2){
+
+                expression("cry");
+
+                negative.textContent=
+                    "حتی یه جمله کوچیک هم کافیه... 🍫🥺";
+
+            }
+
+            else{
+
+                activateEscape(
+                    "نه نه... یه پیشنهاد کوچولو هم می‌خوایم! 🐻🍫",
+                    "نه نه! پیشنهاد نمی‌دم 😭",
+                    showQ4
+                );
+            }
+        };
+}
+
+/* ==================================================
+   ESCAPE
+================================================== */
+
+function activateEscape(
+    message,
+    buttonText,
+    backFunction
+){
+
+    removeEscape();
+
+    const buttons=
+        content.querySelector(".buttons");
+
+    if(buttons){
+
+        buttons
+            .querySelectorAll("button")
+            .forEach(button=>{
+                button.remove();
+            });
+    }
+
+    const textarea=
+        content.querySelector("textarea");
+
+    if(textarea)
+        textarea.remove();
+
+    const layer=
+        document.createElement("div");
+
+    layer.className=
+        "escape-layer";
+
+    const msg=
+        document.createElement("div");
+
+    msg.className=
+        "escape-message";
+
+    msg.textContent=
+        message;
+
+    const escape=
+        document.createElement("button");
+
+    escape.type="button";
+
+    escape.className=
+        "btn danger escape-button";
+
+    escape.textContent=
+        buttonText;
+
+    escape.style.left="50%";
+    escape.style.top="58%";
+
+    escape.style.transform=
+        "translateX(-50%)";
+
+    layer.appendChild(msg);
+    layer.appendChild(escape);
+
+    card.appendChild(layer);
+
+    const back=
+        document.createElement("button");
+
+    back.type="button";
+
+    back.className="back escape-back";
+
+    back.textContent="← برگشت";
+
+    back.style.position="absolute";
+    back.style.bottom="18px";
+    back.style.left="50%";
+
+    back.style.transform=
+        "translateX(-50%)";
+
+    back.style.zIndex="700";
+    back.style.pointerEvents="auto";
+
+    layer.appendChild(back);
+
+    state.escapeLayer=layer;
+    state.escapeButton=escape;
+    state.escapeActive=true;
+
+    /*
+       خیلی مهم:
+       ابتدا موس هیچ اثری ندارد.
+       فقط اولین کلیک دکمه باعث فرار می‌شود.
+    */
+
+    state.escapeProximityEnabled=false;
+
+    state.escapeMoveHandler=
+        function(e){
+
+            if(
+                !state.escapeActive ||
+                !state.escapeProximityEnabled
+            )
+                return;
+
+            const rect=
+                escape.getBoundingClientRect();
+
+            const centerX=
+                rect.left+
+                rect.width/2;
+
+            const centerY=
+                rect.top+
+                rect.height/2;
+
+            const distance=
+                Math.hypot(
+                    e.clientX-centerX,
+                    e.clientY-centerY
+                );
+
+            if(distance<125){
+
+                expression("surprised");
+
+                moveEscapeButton();
+            }
+        };
+
+    document.addEventListener(
+        "pointermove",
+        state.escapeMoveHandler,
+        {passive:true}
+    );
+
+    /*
+       اولین کلیک:
+       اول فرار می‌کند،
+       بعد از آن proximity فعال می‌شود.
+    */
+
+    escape.addEventListener(
+        "click",
+        e=>{
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            expression("surprised");
+
+            moveEscapeButton();
+
+            state.escapeProximityEnabled=true;
+        }
+    );
+
+    /*
+       روی موبایل هم با لمس مستقیم
+       همان رفتار کلیک را داریم.
+    */
+
+    escape.addEventListener(
+        "pointerdown",
+        e=>{
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            /*
+               اگر هنوز proximity فعال نشده،
+               همین لمس اولین فرار را اجرا می‌کند.
+            */
+
+            if(!state.escapeProximityEnabled){
+
+                expression("surprised");
+
+                moveEscapeButton();
+
+                state.escapeProximityEnabled=true;
+            }
+        }
+    );
+
+    back.addEventListener(
+        "click",
+        e=>{
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            removeEscape();
+
+            backFunction();
+        }
+    );
+}
+
+/* ==================================================
+   MOVE ESCAPE
+================================================== */
+
+function moveEscapeButton(){
+
+    if(
+        !state.escapeButton ||
+        !state.escapeLayer
+    )
+        return;
+
+    const layer=
+        state.escapeLayer;
+
+    const button=
+        state.escapeButton;
+
+    const layerRect=
+        layer.getBoundingClientRect();
+
+    const buttonRect=
+        button.getBoundingClientRect();
+
+    const padding=15;
+    const bottomReserved=78;
+
+    const maxX=Math.max(
+        padding,
+        layerRect.width-
+        buttonRect.width-
+        padding
+    );
+
+    const maxY=Math.max(
+        padding,
+        layerRect.height-
+        buttonRect.height-
+        bottomReserved
+    );
+
+    const x=
+        padding+
+        Math.random()*
+        Math.max(
+            1,
+            maxX-padding
+        );
+
+    const y=
+        padding+
+        Math.random()*
+        Math.max(
+            1,
+            maxY-padding
+        );
+
+    button.style.left=
+        x+"px";
+
+    button.style.top=
+        y+"px";
+
+    button.style.transform=
+        "none";
+}
+
+/* ==================================================
+   REMOVE ESCAPE
+================================================== */
+
+function removeEscape(){
+
+    state.escapeActive=false;
+    state.escapeProximityEnabled=false;
+
+    if(state.escapeMoveHandler){
+
+        document.removeEventListener(
+            "pointermove",
+            state.escapeMoveHandler
+        );
+
+        state.escapeMoveHandler=null;
+    }
+
+    card
+        .querySelectorAll(".escape-layer")
+        .forEach(layer=>{
+            layer.remove();
+        });
+
+    state.escapeLayer=null;
+    state.escapeButton=null;
+}
+
+/* ==================================================
+   FOOD RAIN
+================================================== */
+
+function foodRain(){
+
+    const foods=[
+        "🍫",
+        "🥛",
+        "🍪"
+    ];
+
+    for(let i=0;i<24;i++){
+
+        setTimeout(()=>{
+
+            const item=
+                document.createElement("div");
+
+            item.className="food";
+
+            item.textContent=
+                foods[
+                    Math.floor(
+                        Math.random()*
+                        foods.length
+                    )
+                ];
+
+            item.style.left=
+                Math.random()*100+"vw";
+
+            item.style.animationDuration=
+                (2+Math.random()*2)+"s";
+
+            document.body.appendChild(item);
+
+            setTimeout(
+                ()=>item.remove(),
+                4500
+            );
+
+        },i*45);
+    }
+}
+
+/* ==================================================
+   FINAL
+================================================== */
+
+function showFinal(){
+
+    clearQuestion();
+
+    state.current="final";
+
+    card.classList.remove(
+        "sleep-card"
+    );
+
+    bear.classList.remove(
+        "sleeping"
+    );
+
+    expression("laugh");
+
+    content.innerHTML=`
+
+        <div class="final-title">
+
+            مچکریم که تصمیم گرفتین ترم بعد هم با ما کلاس داشته باشین! ❤️
+
+        </div>
+
+        <div class="final-text">
+
+            خیلی خوشحالیم که قراره دوباره کنار هم باشیم. 🐻🍫
+
+            <br><br>
+
+            امیدواریم ترم بعد پر از لحظه‌های خوب،
+            خنده‌های بیشتر و کلی خاطره قشنگ با هم باشه. ❤️
+
+            <br><br>
+
+            این بار دیگه خرس کوچولومون هم حسابی خوشحاله! 🐻🥛❤️
+
+        </div>
+
+        <div class="buttons">
+
+            <button
+                class="btn"
+                id="end">
+
+                پایان ❤️
+
+            </button>
+
+        </div>
+    `;
+
+    animateContent();
+
+    bear.classList.add("dance");
+
+    function blink(){
+
+        if(state.current!=="final")
+            return;
+
+        bear.classList.remove("wink");
+
+        void bear.offsetWidth;
+
+        bear.classList.add("wink");
+
+        setTimeout(()=>{
+
+            bear.classList.remove("wink");
+
+        },350);
+
+        state.blinkTimer=
+            setTimeout(
+                blink,
+                1500+
+                Math.random()*2200
+            );
+    }
+
+    blink();
+
+    document
+        .getElementById("end")
+        .onclick=showSleep;
+}
+
+/* ==================================================
+   SLEEP / REGISTERED
+================================================== */
+
+function showSleep(){
+
+    clearQuestion();
+
+    state.current="sleep";
+
+    card.classList.add(
+        "sleep-card"
+    );
+
+    expression("happy");
+
+    bear.classList.remove(
+        "dance",
+        "wink",
+        "laugh",
+        "happy"
+    );
+
+    void bear.offsetWidth;
+
+    bear.classList.add(
+        "sleeping"
+    );
+
+    content.innerHTML=`
+
+        <div class="final-title">
+
+            خرس کوچولومون هم خوابش برد... 🐻💤
+
+        </div>
+
+        <div class="final-text">
+
+            داده‌ها ثبت شد ✅
+
+            <br><br>
+
+            می‌تونید با خیال راحت خارج بشید ❤️
+
+        </div>
+
+    `;
+
+    animateContent();
+}
+
+</script>
+
+</body>
+</html>
